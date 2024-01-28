@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.ConsultProposal">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="photoProposal" fitHeight="243.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="290.0" prefWidth="165.0" spacing="15.0">
+               <children>
+                  <Label fx:id="titreProposal" prefHeight="13.0" prefWidth="50.0" text="Titre" />
+                  <Text fx:id="descriptionProposal" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="137.59996643066415" />
+                  <Label fx:id="ownerProposal" text="Propriétaire" />
+                  <Text fx:id="disponibilityProposal" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Label fx:id="dailyCostProposal" text="Cout Journalier" />
+                  <Button mnemonicParsing="false" onAction="#DemanderEmprunt" text="Emprunter" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

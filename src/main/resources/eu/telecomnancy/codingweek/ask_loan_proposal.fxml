@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.AskLoanProposalController">
+    <children>
+        <ImageView fx:id="photoProposal" fitHeight="243.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true" />
+        <VBox prefHeight="290.0" prefWidth="165.0" spacing="15.0">
+            <children>
+                <Label fx:id="titreProposal" prefHeight="13.0" prefWidth="28.0" text="Titre" />
+                <Text fx:id="descriptionProposal" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="137.59996643066415" />
+                <Label fx:id="ownerProposal" text="Propriétaire" />
+            <Text fx:id="disponibilityProposal" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Label fx:id="dailyCostProposal" text="Cout Journalier" />
+            </children>
+        </VBox>
+        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="307.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Indiquez les dates auxquelles vous voulez emprunter" wrappingWidth="267.0517578125">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin></Text>
+            <DatePicker fx:id="start_date_loan">
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </DatePicker>
+            <DatePicker fx:id="end_date_loan">
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </DatePicker>
+            <Label fx:id="message_erreur">
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#askToLoan" text="Demander">
+               <VBox.margin>
+                  <Insets left="10.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            </children>
+        </VBox>
+    </children>
+</HBox>

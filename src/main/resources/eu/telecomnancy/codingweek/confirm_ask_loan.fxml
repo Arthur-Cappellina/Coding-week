@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.AskLoanProposalController">
+    <children>
+        <ImageView fx:id="photoProposal" fitHeight="243.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true" />
+        <VBox prefHeight="290.0" prefWidth="165.0" spacing="15.0">
+            <children>
+                <Label fx:id="titreProposal" prefHeight="13.0" prefWidth="28.0" text="Titre" />
+                <Text fx:id="descriptionProposal" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="137.59996643066415" />
+                <Label fx:id="ownerProposal" text="Propriétaire" />
+                <Text fx:id="disponibilityProposal" prefHeight="14.0" prefWidth="120.0" text="Les disponiblilités" />
+                <Label fx:id="dailyCostProposal" text="Cout Journalier" />
+            </children>
+        </VBox>
+        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="307.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Votre demande a bien été prise en compte. En attente de la réponse du propriétaire..." wrappingWidth="283.1259765625">
+               <VBox.margin>
+                  <Insets left="30.0" top="30.0" />
+               </VBox.margin></Text>
+         </children>
+        </VBox>
+    </children>
+</HBox>

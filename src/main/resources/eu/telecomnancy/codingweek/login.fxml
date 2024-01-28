@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1150.0" styleClass="backgroundColor2FX" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.LoginController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="700.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/dog.png" />
+               </image>
+            </ImageView>
+            <Label text="Il n'y a pas de meilleur compagnie que celle d'un chien." textFill="#9c9c9c">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
+      </VBox>
+      <VBox alignment="CENTER" prefWidth="525.0" style="-fx-background-radius: 0.5em;" styleClass="background" stylesheets="@Style.css">
+         <HBox.margin>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </HBox.margin>
+         <children>
+            <ImageView fitHeight="152.0" fitWidth="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo.png" />
+               </image></ImageView>
+            <Label styleClass="textPrimaryFx" text="Connexion" textAlignment="CENTER" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="150.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label styleClass="textSecondaryFx" text="Email" textFill="#bfbfbf" />
+                        <TextField fx:id="username" promptText="Entrer votre adresse email...">
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label styleClass="textSecondaryFx" text="Mot de passe" textFill="#bfbfbf" />
+                        <PasswordField fx:id="password" promptText="Entrez votre mot de passe..." />
+                        <Label fx:id="erreur" text="Message d'erreur" textFill="RED" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#connect" styleClass="buttonFx" text="SE CONNECTER" />
+            <Hyperlink onAction="#goToRegistration" text="Inscription">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Hyperlink>
+            <Hyperlink layoutX="216.0" layoutY="489.0" onAction="#fastLog" text="Fast log" />
+         </children>
+         <padding>
+            <Insets left="40.0" right="40.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

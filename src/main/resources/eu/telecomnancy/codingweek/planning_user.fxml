@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.PlanningUser">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="615.0" text="Planning des disponibilités de l'utilisateur">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Lundi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lundi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Mardi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="mardi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Mercredi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="mercredi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Jeudi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="jeudi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Vendredi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="vendredi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Samedi">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="samedi" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="35.0" prefWidth="88.0" text="Dimanche">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="dimanche" alignment="CENTER" prefHeight="67.0" prefWidth="87.0" text="Label">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="350.0" text="Ajouter un jour">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#addLundi" text="Lundi" />
+                      <MenuItem mnemonicParsing="false" onAction="#addMardi" text="Mardi" />
+                        <MenuItem mnemonicParsing="false" onAction="#addMercredi" text="Mercredi" />
+                        <MenuItem mnemonicParsing="false" onAction="#addJeudi" text="Jeudi" />
+                        <MenuItem mnemonicParsing="false" onAction="#addVendredi" text="Vendredi" />
+                        <MenuItem mnemonicParsing="false" onAction="#addSamedi" text="Samedi" />
+                        <MenuItem mnemonicParsing="false" onAction="#addDimanche" text="Dimanche" />
+                    </items>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" prefHeight="26.0" prefWidth="350.0" text="Retirer un jour">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#removeLundi" text="Lundi" />
+                      <MenuItem mnemonicParsing="false" onAction="#removeMardi" text="Mardi" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeMercredi" text="Mercredi" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeJeudi" text="Jeudi" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeVendredi" text="Vendredi" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeSamedi" text="Samedi" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeDimanche" text="Dimanche" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#comeback" prefHeight="26.0" prefWidth="350.0" text="Annuler" />
+                  <Button mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="350.0" text="Sauvegarder" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

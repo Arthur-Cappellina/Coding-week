@@ -1,0 +1,59 @@
+.backgroundColorFX{
+    -fx-background-color: #C9DEFF;
+}
+
+.backgroundColor2FX{
+    -fx-background-color: #031726;
+}
+
+.buttonFx{
+    -fx-background-color: #294371;
+    -fx-background-radius:0.1em;
+    -fx-border-color: white;
+    -fx-border-radius: 0.5em;
+    -fx-text-fill: white;
+}
+
+.buttonFx:hover{
+    -fx-background-color: #04263f;
+    -fx-background-radius: 0.5em;
+}
+
+.containerFx{
+    -fx-background-color: #000000;
+}
+
+.textPrimaryFx{
+    -fx-text-fill: white;
+}
+
+.textSecondaryFx{
+    -fx-text-fill:#bfbfbf
+}
+
+.ppButtonFX{
+    -fx-border-style: none none none none;
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+
+.background {
+    -fx-border-color: white;
+    -fx-border-width: 0.02em;
+    -fx-border-radius: 20;
+}
+
+.title {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.primary-button {
+    -fx-background-color: #ee0000;
+    -fx-background-radius: 0.5em;
+    -fx-border-color: white;
+    -fx-border-radius: 0.5em;
+    -fx-text-fill: white;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}

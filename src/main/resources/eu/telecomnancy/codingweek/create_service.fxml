@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" styleClass="backgroundColorFX" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.codingweek.Controllers.CreateServiceController">
+   <children>
+      <Label styleClass="ppButtonFX" text="Création service">
+         <font>
+            <Font name="Poppins Light" size="25.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="50.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+         <children>
+            <TextField fx:id="title" minWidth="300.0" promptText="Title">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin></TextField>
+            <Button minWidth="200.0" mnemonicParsing="false" onAction="#findFile" text="Ajouter une image">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </HBox>
+      <TextField maxWidth="200.0" prefWidth="100.0" promptText="Florans">
+         <VBox.margin>
+            <Insets left="50.0" top="20.0" />
+         </VBox.margin>
+      </TextField>
+      <TextArea fx:id="description" maxWidth="850.0" prefHeight="200.0" prefWidth="200.0" promptText="Description">
+      <VBox.margin>
+         <Insets left="50.0" top="20.0" />
+      </VBox.margin></TextArea>
+      <Button mnemonicParsing="false" onAction="#save" styleClass="primary-button" text="Sauvegarder">
+         <VBox.margin>
+            <Insets left="50.0" top="30.0" />
+         </VBox.margin></Button>
+   </children>
+</VBox>

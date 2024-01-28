@@ -1,0 +1,202 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Admin
+class AdminUserCreator {
+  + createUser(): User
+  + createUser(String, String, String, String, String, String, String): User
+}
+class BASICUserDAO {
+  + getInstance(): BASICUserDAO
+  + getBasicUserWithEmail(String): BasicUser
+  + insertBasicUser(BasicUser): boolean
+  + deleteBasicUser(BasicUser): boolean
+}
+class BasicUser {
+  - proposals: ArrayList<Proposal>
+  + setProposals(ArrayList<Proposal>): void
+  + removeProposal(Proposal): void
+  + getProposals(): ArrayList<Proposal>
+  + addProposal(Proposal): void
+}
+class BasicUserCreator {
+  + createUser(): User
+  + createUser(String, String, String, String, String, String, String): User
+}
+class CreateProduct {
+  - title: TextField
+  - description: TextArea
+  - selectedFile: File
+  - fileChooser: FileChooser
+  - main: Main
+  - user: User
+  - dateStart: DatePicker
+  - dateEnd: DatePicker
+  + save(): void
+  + findFile(): void
+}
+class CreateService {
+  - selectedFile: File
+  - user: User
+  - fileChooser: FileChooser
+  - title: TextField
+  - main: Main
+  - description: TextArea
+  + findFile(): void
+  + save(): void
+}
+class DAO {
+  # connexion: Connection
+  # uniqueDAO: DAO
+  # getConnexion(): Connection
+}
+class Disponibility {
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+}
+class FloransAccount {
+  - balance: int
+  - id: int
+  - user: User
+  + removeBalance(int): void
+  + getId(): int
+  + getBalance(): int
+  + getUser(): User
+  + setId(int): void
+  + setBalance(int): void
+  + setUser(User): void
+  + addBalance(int): void
+}
+class Helper {
+  - getExtensionFiltersImages(): ExtensionFilter[]
+  + cloneHbox(HBox): HBox
+  + cloneNode(Node): Node
+  + generateUniqueFileName(): String
+  + saveImage(File): String
+  + getImagesFileChooser(): FileChooser
+  + cloneVbox(VBox): VBox
+}
+class Horaire {
+  - dateEnd: LocalDateTime
+  - dateStart: LocalDateTime
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  + getDateEnd(): LocalDateTime
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+  + getDayStart(): String
+  + setDateStart(LocalDateTime): void
+  + getDayEnd(): String
+  + setDateEnd(LocalDateTime): void
+  + getDateStart(): LocalDateTime
+}
+class LeftMenu {
+  - main: Main
+  - user: User
+  + submitService(): void
+  + searchPage(): void
+  + submitProduct(): void
+  + goHome(): void
+}
+class Main {
+  - stage: Stage
+  - user: User
+  - pane: BorderPane
+  + getStage(): Stage
+  + showSubmitProduct(): void
+  + start(Stage): void
+  + showSearchPage(): void
+  + showHome(): void
+  + showSubmitService(): void
+  + main(String[]): void
+}
+class Principal {
+  + main(String[]): void
+}
+class Product {
+  + toString(): String
+  + getProductsDefaut(): List<Product>
+}
+class Proposal {
+  - id: int
+  - disponibilities: List<Disponibility>
+  - title: String
+  - user: User
+  - description: String
+  - picture: String
+  + addDisponibility(Disponibility): void
+  + setDescription(String): void
+  + getDescription(): String
+  + getUser(): User
+  + getPicture(): String
+  + setUser(User): void
+  + getId(): int
+  + setTitle(String): void
+  + setPicture(String): void
+  + getDisponibilities(): List<Disponibility>
+  + setDisponibilities(List<Disponibility>): void
+  + getTitle(): String
+}
+class RegularWeekly {
+  - jour: String
+  - days: List<String>
+  + setJour(String): void
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  - estEcartDe7JoursAuPlus(LocalDateTime, LocalDateTime): boolean
+  + getJour(): String
+  + initDays(): void
+}
+class SearchPage {
+  - user: User
+  - rightModel: VBox
+  - main: Main
+  - model: HBox
+  - parent: VBox
+  + getRightModel(): VBox
+  + getModel(): HBox
+  + getParent(): VBox
+}
+class Service {
+  + getServicesDefaut(): List<Service>
+  + toString(): String
+}
+class User {
+  - postalAddress: String
+  - lastName: String
+  - password: String
+  - firstName: String
+  - zipCode: String
+  - city: String
+  - email: String
+  + getPostalAddress(): String
+  + setPassword(String): void
+  + getZipCode(): String
+  + getCity(): String
+  + setFirstName(String): void
+  + getEmail(): String
+  + setCity(String): void
+  + getLastName(): String
+  + setPostalAddress(String): void
+  + getFirstName(): String
+  + setZipCode(String): void
+  + setEmail(String): void
+  + setLastName(String): void
+  + getPassword(): String
+}
+interface UserCreator << interface >> {
+  + createUser(): User
+  + createUser(String, String, String, String, String, String, String): User
+}
+
+Admin             -[#000082,plain]-^  User             
+AdminUserCreator  -[#008200,dashed]-^  UserCreator      
+BASICUserDAO      -[#000082,plain]-^  DAO              
+BasicUser         -[#000082,plain]-^  User             
+BasicUserCreator  -[#008200,dashed]-^  UserCreator      
+Horaire           -[#000082,plain]-^  Disponibility    
+Product           -[#000082,plain]-^  Proposal         
+RegularWeekly     -[#000082,plain]-^  Disponibility    
+Service           -[#000082,plain]-^  Proposal         
+@enduml

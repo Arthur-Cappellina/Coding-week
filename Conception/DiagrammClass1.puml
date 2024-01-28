@@ -1,0 +1,112 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class User {
+    -firstName : String;
+    -lastName : String;
+    -zipCode : String;
+    -postalAddress : String;
+    -city : String
+    -email : String;
+    -password : String;
+
+    +getFirstName() : String
+    +getLastName() : String
+    +getZipCode() : String
+    +getPostalAddress() : String
+    +getCity() : String
+    +getEmail() : String
+    +getPassword() : String
+    +setFirstName(String) : void
+    +setLastName(String) : void
+    +setZipCode(String) : void
+    +setPostalAddress(String) : void
+    +setCity(String) : void
+    +setEmail(String) : void
+    +setPassword(String) : void
+}
+
+class BasicUser {
+    -proposals : ArrayList<Proposal>
+    +BasicUser()
+    +BasicUser(String, String, String, String, String, String, String)
+    +getProposals() : ArrayList<Proposal>
+    +setProposals(ArrayList<Proposal>) : void
+    +addProposal(Proposal) : void
+    +removeProposal(Proposal) : void
+}
+
+User <|-- BasicUser
+
+class Admin {
+    +Admin()
+    +Admin(String, String, String, String, String, String, String)
+}
+
+User <|-- Admin
+
+interface UserCreator {
+    +createUser() : User
+    +createUser(String, String, String, String, String, String, String) : User
+}
+
+class BasicUserCreator {
+    +createUser() : User
+    +createUser(String, String, String, String, String, String, String) : User
+}
+
+UserCreator <|.. BasicUserCreator
+
+class AdminUserCreator {
+    +createUser() : User
+    +createUser(String, String, String, String, String, String, String) : User
+}
+
+UserCreator <|.. AdminUserCreator
+BasicUserCreator ..> BasicUser
+AdminUserCreator ..> Admin
+
+abstract class Proposal {
+    -titre : String
+    -description : String
+    -photo : String
+    +getter
+    +setter
+    +addDisponibility(Disponibility disponibility)
+}
+
+class Product {
+}
+
+abstract class Proposal {
+}
+
+Product --|> Proposal
+Service --|> Proposal
+
+Horaire --|> Disponibility
+RegularWeekly --|> Disponibility
+
+abstract class Disponibility {
+    +isDisponible(LocalDateTime dateStart, LocalDateTime dateEnd) : boolean
+    +getDisponibility() : String
+}
+
+class Horaire {
+    -dateStart : LocalDateTime
+    -dateEnd : LocalDateTime
+    +isDisponible(LocalDateTime dateStart, LocalDateTime dateEnd) : boolean
+    +getDisponibility() : String
+}
+
+class RegularWeekly {
+    -jour : String
+    -static days : List<String>
+    +isDisponible(LocalDateTime dateStart, LocalDateTime dateEnd) : boolean
+    +getDisponibility() : String
+}
+
+Proposal "1" *-- "0*" Disponibility : contains
+
+
+@enduml

@@ -1,0 +1,611 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Admin
+class AdminUserCreator {
+  + createUser(String, String, String, String, String, String, String): User
+  + createUser(): User
+}
+class AskLoanProposalController {
+  - main: Main
+  - proposal: Proposal
+  - titreProposal: Label
+  - start_date_loan: TextField
+  - disponibilityProposal: Label
+  - ownerProposal: Label
+  - descriptionProposal: Text
+  - end_date_loan: TextField
+  - dailyCostProposal: Label
+  - photoProposal: ImageView
+  - message_erreur: Label
+  ~ askToLoan(ActionEvent): void
+}
+class BasicUser {
+  - proposals: ArrayList<Proposal>
+  + acceptLoan(Loan): void
+  + askToLoan(Proposal, LocalDateTime, LocalDateTime): Loan
+  + removeProposal(Proposal): void
+  + getProposals(): ArrayList<Proposal>
+  + setProposals(ArrayList<Proposal>): void
+  + addProposal(Proposal): void
+  + toString(): String
+}
+class BasicUserCreator {
+  + createUser(): User
+  + createUser(String, String, String, String, String, String, String): User
+}
+class BasicUserDAO {
+  - uniqueDAO: BasicUserDAO
+  + getBasicUserWithId(int): BasicUser
+  + deleteBasicUser(BasicUser): boolean
+  + getInstance(): BasicUserDAO
+  + insertBasicUser(BasicUser): boolean
+  + getLastIdBasicUser(): int
+  + getBasicUserWithEmail(String): BasicUser
+}
+class ConsultProposal {
+  - proposal: Proposal
+  - titreProposal: Label
+  - dailyCostProposal: Label
+  - main: Main
+  - descriptionProposal: Text
+  - photoProposal: ImageView
+  - disponibilityProposal: Label
+  - ownerProposal: Label
+  ~ DemanderEmprunt(ActionEvent): void
+}
+class CreateProductController {
+  - dateStart: DatePicker
+  - fileChooser: FileChooser
+  - description: TextArea
+  - selectedFile: File
+  - dateEnd: DatePicker
+  - title: TextField
+  - main: Main
+  - user: User
+  + save(): void
+  + findFile(): void
+}
+class CreateServiceController {
+  - user: User
+  - fileChooser: FileChooser
+  - title: TextField
+  - selectedFile: File
+  - description: TextArea
+  - main: Main
+  + save(): void
+  + findFile(): void
+}
+class DAO {
+  # uniqueDAO: DAO
+  # connexion: Connection
+  # getConnexion(): Connection
+}
+class DateFilter {
+  - end: LocalDateTime
+  - start: LocalDateTime
+  + filtering(List<Proposal>): List<Proposal>
+}
+class Disponibility {
+  # idDisponibility: int
+  + getIdDisponibility(): int
+  + setIdDisponibility(int): void
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+}
+class DisponibilityDAO {
+  - uniqueDAO: DisponibilityDAO
+  + insertDisponibility(int): boolean
+  + getLastIdDisponibility(): int
+  + deleteDisponibility(Disponibility): boolean
+  + getDisponibilityWithId(int): Disponibility
+  + getInstance(): DisponibilityDAO
+}
+class Filter {
+  # searchInstance: Search
+  + filtering(List<Proposal>): List<Proposal>
+}
+class FloransAccount {
+  - id: int
+  - balance: int
+  - user: User
+  + getId(): int
+  + getBalance(): int
+  + getUser(): User
+  + setId(int): void
+  + setBalance(int): void
+  + setUser(User): void
+  + addBalance(int): void
+  + removeBalance(int): void
+}
+class Helper {
+  + cloneNode(Node): Node
+  + convertDateTimeToDate(String): LocalDateTime
+  + getImagesFileChooser(): FileChooser
+  + cloneHbox(HBox): HBox
+  + convertDateTime(LocalDateTime): String
+  + convertDateTimeNow(): LocalDateTime
+  - getExtensionFiltersImages(): ExtensionFilter[]
+  + checkDates(LocalDateTime, LocalDateTime): boolean
+  + convertDate(String): LocalDateTime
+  + convertDate(LocalDateTime): String
+  + saveImage(File): String
+  + generateUniqueFileName(): String
+  + cloneVbox(VBox): VBox
+  + convertDateTime(String): String
+}
+class HomeController {
+  - bonjour: Label
+  - startEmprunt: TableColumn<HomeEmprunt, String>
+  - titreEmprunt: TableColumn<HomeEmprunt, String>
+  - empruntIsExpired: TableColumn<HomeEmprunt, String>
+  - titreProposal: TableColumn<HomeProposal, String>
+  - tableauEmprunt: TableView<HomeEmprunt>
+  - consultProposal: TableColumn<HomeProposal, Void>
+  - editProposal: TableColumn<HomeProposal, Void>
+  - proprietaireEmprunt: TableColumn<HomeEmprunt, String>
+  - tableauProposal: TableView<HomeProposal>
+  - user: User
+  - main: Main
+  - descriptionProposal: TableColumn<HomeProposal, String>
+  - endEmprunt: TableColumn<HomeEmprunt, String>
+  + getConsultProposal(): TableColumn<HomeProposal, Void>
+  + getBonjour(): Label
+  + setProprietaireEmprunt(TableColumn<HomeEmprunt, String>): void
+  + setTitreEmprunt(TableColumn<HomeEmprunt, String>): void
+  + getDescriptionProposal(): TableColumn<HomeProposal, String>
+  + setEditProposal(TableColumn<HomeProposal, Void>): void
+  + getEditProposal(): TableColumn<HomeProposal, Void>
+  + getEmpruntIsExpired(): TableColumn<HomeEmprunt, String>
+  + setBonjour(Label): void
+  + setDescriptionProposal(TableColumn<HomeProposal, String>): void
+  + getMain(): Main
+  + setStartEmprunt(TableColumn<HomeEmprunt, String>): void
+  + getEndEmprunt(): TableColumn<HomeEmprunt, String>
+  + getProprietaireEmprunt(): TableColumn<HomeEmprunt, String>
+  + setEndEmprunt(TableColumn<HomeEmprunt, String>): void
+  + getStartEmprunt(): TableColumn<HomeEmprunt, String>
+  + getTitreProposal(): TableColumn<HomeProposal, String>
+  + setTableauProposal(TableView<HomeProposal>): void
+  + setMain(Main): void
+  + getUser(): User
+  + getTableauEmprunt(): TableView<HomeEmprunt>
+  + getTitreEmprunt(): TableColumn<HomeEmprunt, String>
+  + setTitreProposal(TableColumn<HomeProposal, String>): void
+  + setConsultProposal(TableColumn<HomeProposal, Void>): void
+  + setUser(User): void
+  + getTableauProposal(): TableView<HomeProposal>
+  + setTableauEmprunt(TableView<HomeEmprunt>): void
+  + setEmpruntIsExpired(TableColumn<HomeEmprunt, String>): void
+  + init(Main, User): void
+  + addConsultButton(): void
+}
+class HomeEmprunt
+class HomeProposal {
+  - title: String
+  - description: String
+  - id: int
+  + getTitle(): String
+  + getDescription(): String
+  + getId(): int
+  + setTitle(String): void
+  + setDescription(String): void
+  + setId(int): void
+}
+class Horaire {
+  - dateStart: LocalDateTime
+  - dateEnd: LocalDateTime
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+  + setDateEnd(LocalDateTime): void
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  + getDateEnd(): LocalDateTime
+  + setDateStart(LocalDateTime): void
+  + getDateStart(): LocalDateTime
+  + getDayEnd(): String
+  + getDayStart(): String
+}
+class HoraireDAO {
+  - uniqueDAO: HoraireDAO
+  + insertHoraire(Horaire, int): boolean
+  + getHoraireWithId(int): Horaire
+  + getInstance(): HoraireDAO
+  + deleteHoraire(Horaire): boolean
+}
+class LeftMenuController {
+  - main: Main
+  - user: User
+  + goHome(): void
+  + goMessages(): void
+  + submitProduct(): void
+  + goPlanning(ActionEvent): void
+  + submitService(): void
+  + searchPage(): void
+}
+class Loan {
+  - startDateLoan: LocalDateTime
+  - idLoan: int
+  - endDateLoan: LocalDateTime
+  - borrower: BasicUser
+  - proposal: Proposal
+  - isAccepted: boolean
+  + getStartDateLoan(): LocalDateTime
+  + getProposal(): Proposal
+  + setStartDateLoan(LocalDateTime): void
+  + setAccepted(boolean): void
+  + setIdLoan(int): void
+  + getBorrower(): BasicUser
+  + getIdLoan(): int
+  + setBorrower(BasicUser): void
+  + isAccepted(): boolean
+  + getEndDateLoan(): LocalDateTime
+  + setEndDateLoan(LocalDateTime): void
+  + setProposal(Proposal): void
+}
+class LoanDAO {
+  - uniqueDAO: LoanDAO
+  + setLoanAccepted(Loan): boolean
+  + getLoanWithId(int): Loan
+  + getInstance(): LoanDAO
+  + deleteLoan(Loan): boolean
+  + getLastIdLoan(): int
+  + isLoanExistBetweenDates(Proposal, LocalDateTime, LocalDateTime): boolean
+  + insertLoan(Loan): boolean
+}
+class Login {
+  - password: String
+  - email: String
+  + getErrorMessage(): String
+  + getEmail(): String
+  + getPassword(): String
+  + checkPassword(): boolean
+  + login(): BasicUser
+  + getHash(): String
+  + isValid(): boolean
+  + checkEmail(): boolean
+}
+class LoginController {
+  - password: PasswordField
+  - main: Main
+  - user: User
+  - username: TextField
+  - erreur: Label
+  + fastLog(): void
+  + goToRegistration(): void
+  + init(): void
+  + connect(): void
+}
+class Main {
+  - user: User
+  - stage: Stage
+  - pane: BorderPane
+  + showConfirmAskLoan(Proposal): void
+  + showMessages(List<User>, List<Message>): void
+  + showSearchPage(String): void
+  + getStage(): Stage
+  + showConsultProposal(Proposal): void
+  + showSearchPage(int): void
+  + showSearchPage(): void
+  + start(Stage): void
+  + showSearchPage(int, String): void
+  + showSubmitProduct(): void
+  + showSubmitService(): void
+  + connect(User): void
+  + showLogin(): void
+  + main(String[]): void
+  + getUser(): User
+  + showAskLoan(Proposal): void
+  + addMenus(): void
+  + showRegistration(): void
+  + showHome(): void
+  + showPlanning(): void
+}
+class Message {
+  - sender: User
+  - receiver: User
+  - content: String
+  - id: int
+  - date: LocalDateTime
+  + getSender(): User
+  + getReceiver(): User
+  + getContent(): String
+  + getDate(): LocalDateTime
+  + getId(): int
+  + setSender(User): void
+  + setReceiver(User): void
+  + setContent(String): void
+  + setDate(LocalDateTime): void
+  + setId(int): void
+  + toString(): String
+}
+class MessageController {
+  - main: Main
+  - scrollPaneMessage: ScrollPane
+  - currentConversation: User
+  - messagesParent: VBox
+  - usersList: List<User>
+  - currentConversationPerson: Label
+  - conversationParent: VBox
+  - user: User
+  - messagesList: List<Message>
+  - messageField: TextField
+  + addMessages(VBox): void
+  + send(): void
+  + createVBoxMessage(Message): VBox
+  + addAllConversations(List<User>): void
+  + onEnter(KeyEvent): void
+  + addConversation(HBox): void
+  + updateAll(): void
+  + setConversationsPerson(String): void
+  + addAllMessages(List<Message>): void
+  + createHboxPerson(User): HBox
+}
+class MessageDAO {
+  - uniqueDAO: MessageDAO
+  + deleteMessage(Message): boolean
+  + messagesFromUser(User): List<Message>
+  + getInstance(): MessageDAO
+  + insertMessage(Message): boolean
+  + getMessageWithId(int): Message
+}
+class Planning {
+  - days: ArrayList<RegularWeekly>
+  + getDays(): ArrayList<RegularWeekly>
+  + addDay(RegularWeekly): void
+  + removeDay(String): void
+}
+class PlanningUser {
+  - jeudi: Label
+  - lundi: Label
+  - vendredi: Label
+  - samedi: Label
+  - dimanche: Label
+  - mardi: Label
+  - mercredi: Label
+  - main: Main
+  - user: User
+  + addDimanche(ActionEvent): void
+  + removeLundi(ActionEvent): void
+  + removeMardi(ActionEvent): void
+  + removeJeudi(ActionEvent): void
+  + removeDimanche(ActionEvent): void
+  + removeMercredi(ActionEvent): void
+  + addMardi(ActionEvent): void
+  + addVendredi(ActionEvent): void
+  + initialize(): void
+  + addLundi(ActionEvent): void
+  + save(ActionEvent): void
+  + removeVendredi(ActionEvent): void
+  + removeSamedi(ActionEvent): void
+  + addSamedi(ActionEvent): void
+  + addMercredi(ActionEvent): void
+  + addJeudi(ActionEvent): void
+  + comeback(ActionEvent): void
+}
+class Principal {
+  + main(String[]): void
+}
+class Product {
+  + toString(): String
+  + getProductsDefault(): List<Product>
+}
+class ProductDAO {
+  - uniqueDAO: ProductDAO
+  + insertProduct(Product): boolean
+  + getInstance(): ProductDAO
+  + getProductWithId(int): Product
+  + deleteProduct(Product): boolean
+}
+class Proposal {
+  - dailyCost: int
+  - description: String
+  - id: int
+  - idProposal: int
+  - title: String
+  - picture: String
+  - disponibilities: List<Disponibility>
+  - user: User
+  + setTitle(String): void
+  + setDescription(String): void
+  + setPicture(String): void
+  + setUser(User): void
+  + getPicture(): String
+  + getId(): int
+  + getIdProposal(): int
+  + getDisponibilities(): List<Disponibility>
+  + getTitle(): String
+  + isProposalDisponible(LocalDateTime, LocalDateTime): boolean
+  + getUser(): User
+  + setIdProposal(int): void
+  + setDisponibilities(List<Disponibility>): void
+  + addDisponibility(Disponibility): void
+  + getDescription(): String
+  + getDailyCost(): int
+}
+class ProposalDAO {
+  - uniqueDAO: ProposalDAO
+  + isInstanceOfProduct(int): boolean
+  + getProposalWithId(int): Proposal
+  + deleteProposal(Proposal): boolean
+  + insertProposal(Proposal): boolean
+  + getInstance(): ProposalDAO
+  + getLastIdProposal(): int
+  + isInstanceOfService(int): boolean
+}
+class Registration {
+  - password: String
+  - lastName: String
+  - postalAddress: String
+  - city: String
+  - firstName: String
+  - zipCode: String
+  - hash: String
+  - email: String
+  - passwordConfirmation: String
+  + getLastName(): String
+  + getEmail(): String
+  + setEmail(String): void
+  + setFirstName(String): void
+  + setHash(String): void
+  + setPostalAddress(String): void
+  + getPassword(): String
+  + getPasswordConfirmation(): String
+  + setZipCode(String): void
+  + getFirstName(): String
+  + getZipCode(): String
+  + getHash(): String
+  + getPostalAddress(): String
+  + setPasswordConfirmation(String): void
+  + setLastName(String): void
+  + getCity(): String
+  + setPassword(String): void
+  + setCity(String): void
+  + isPasswordValid(): boolean
+  + isEmailValid(): boolean
+  + isRegistrationValid(): boolean
+  + isValid(): boolean
+  + isFirstNameValid(): boolean
+  + isLastNameValid(): boolean
+  + signup(): BasicUser
+  + isCityValid(): boolean
+  + getErrorMessage(): String
+  + checkEmail(): boolean
+  + isPostalAddressValid(): boolean
+  + isZipCodeValid(): boolean
+  + createHash(): void
+}
+class RegistrationController {
+  - postalCode: TextField
+  - password: PasswordField
+  - address: TextField
+  - main: Main
+  - city: TextField
+  - passwordConfirm: PasswordField
+  - firstName: TextField
+  - user: User
+  - lastName: TextField
+  - email: TextField
+  - erreur: Label
+  + save(): void
+  + goToLogin(): void
+}
+class RegularWeekly {
+  - jour: String
+  - days: List<String>
+  + initDays(): void
+  + isDisponible(LocalDateTime, LocalDateTime): boolean
+  + setJour(String): void
+  + getJour(): String
+  + getDisponibility(LocalDateTime, LocalDateTime): String
+  - estEcartDe7JoursAuPlus(LocalDateTime, LocalDateTime): boolean
+}
+class RegularWeeklyDAO {
+  - uniqueDAO: RegularWeeklyDAO
+  + getInstance(): RegularWeeklyDAO
+  + getRegularWeeklyWithId(int): RegularWeekly
+  + deleteRegularWeekly(RegularWeekly): boolean
+  + insertRegularWeekly(RegularWeekly, int): boolean
+}
+interface Search << interface >> {
+  + filtering(List<Proposal>): List<Proposal>
+}
+class SearchConcrete {
+  - text: String
+  + getText(): String
+  + setText(String): void
+  + getErrorMessage(): String
+  + filtering(List<Proposal>): List<Proposal>
+  + isSearchValid(): boolean
+}
+class SearchPageController {
+  - user: User
+  - parent: VBox
+  - model: HBox
+  - endDate: DatePicker
+  - rightModel: VBox
+  - nbPages: Label
+  - main: Main
+  - startDate: DatePicker
+  - searchBar: TextField
+  + getStartDate(): DatePicker
+  + getRightModel(): VBox
+  + getEndDate(): DatePicker
+  + searchButton(): void
+  + getModel(): HBox
+  + left(): void
+  + getParent(): VBox
+  + getNbPages(): Label
+  + right(): void
+  + getSearchBar(): TextField
+}
+class Service {
+  + getServicesDefaut(): List<Service>
+  + toString(): String
+}
+class ServiceDAO {
+  - uniqueDAO: ServiceDAO
+  + getInstance(): ServiceDAO
+  + insertService(Service): boolean
+  + deleteService(Service): boolean
+  + getServiceWithId(int): Service
+}
+class User {
+  - password: String
+  - zipCode: String
+  - lastName: String
+  - email: String
+  - planning: Planning
+  - firstName: String
+  - city: String
+  - idUser: int
+  - postalAddress: String
+  + setZipCode(String): void
+  + getPostalAddress(): String
+  + setCity(String): void
+  + setEmail(String): void
+  + setPostalAddress(String): void
+  + hashCode(): int
+  + getIdUser(): int
+  + getZipCode(): String
+  + setPassword(String): void
+  + setPlanning(Planning): void
+  + getLastName(): String
+  + getEmail(): String
+  + getPassword(): String
+  + equals(Object): boolean
+  + setIdUser(int): void
+  + toString(): String
+  + setLastName(String): void
+  + getFirstName(): String
+  + getCity(): String
+  + setFirstName(String): void
+  + getPlanning(): Planning
+}
+interface UserCreator << interface >> {
+  + createUser(): User
+  + createUser(String, String, String, String, String, String, String): User
+}
+
+Admin                      -[#000082,plain]-^  User                      
+AdminUserCreator           -[#008200,dashed]-^  UserCreator               
+BasicUser                  -[#000082,plain]-^  User                      
+BasicUserCreator           -[#008200,dashed]-^  UserCreator               
+BasicUserDAO               -[#000082,plain]-^  DAO                       
+DateFilter                 -[#000082,plain]-^  Filter                    
+DisponibilityDAO           -[#000082,plain]-^  DAO                       
+Filter                     -[#008200,dashed]-^  Search                    
+Horaire                    -[#000082,plain]-^  Disponibility             
+HoraireDAO                 -[#000082,plain]-^  DAO                       
+LoanDAO                    -[#000082,plain]-^  DAO                       
+MessageDAO                 -[#000082,plain]-^  DAO                       
+Product                    -[#000082,plain]-^  Proposal                  
+ProductDAO                 -[#000082,plain]-^  DAO                       
+ProposalDAO                -[#000082,plain]-^  DAO                       
+RegularWeekly              -[#000082,plain]-^  Disponibility             
+RegularWeeklyDAO           -[#000082,plain]-^  DAO                       
+SearchConcrete             -[#008200,dashed]-^  Search                    
+Service                    -[#000082,plain]-^  Proposal                  
+ServiceDAO                 -[#000082,plain]-^  DAO                       
+@enduml
